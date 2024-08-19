@@ -1,0 +1,11 @@
+[
+  {
+    "type": "MOD_INFO",
+    "id": "lv_kickflips",
+    "name": "Kickflips",
+    "authors": [ "ladyViviaen" ],
+    "description": "kickflips, and bombs!",
+    "category": "content",
+    "dependencies": [ "dda" ]
+  }
+]

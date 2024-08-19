@@ -1,0 +1,116 @@
+[
+  {
+    "type": "vehicle_part",
+    "looks_like": "controls",
+    "name": { "str": "kickflip" },
+    "id": "vp_kickflip",
+    "categories": [ "utility" ],
+    "broken_color": "red",
+    "damage_modifier": 10,
+    "durability": 200,
+    "description": "Do a kickflip",
+    "item": "pseudo_kickflip",
+    "requirements": {
+      "install": { "skills": [ [ "electronics", 100 ] ], "time": "365 d" },
+      "removal": { "skills": [ [ "electronics", 100 ] ], "time": "365 d" },
+      "repair": { "skills": [ [ "electronics", 4 ] ], "time": "30 m", "using": [ [ "soldering_standard", 8 ] ] }
+    },
+    "pseudo_tools": [ { "id": "pseudo_kickflip", "hotkey": "k" } ],
+    "variants": [ { "symbols": "$", "symbols_broken": "$" } ]
+  },
+  {
+    "id": "pseudo_kickflip",
+    "type": "TOOL",
+    "name": "kickflip",
+    "flags": [ "ZERO_WEIGHT", "TRADER_AVOID", "DEBUG_ONLY" ],
+    "description": "Do a kickflip",
+    "weight": "1 g",
+    "volume": "1 ml",
+    "symbol": "[",
+    "color": "red",
+    "copy-from": "fake_item",
+    "use_action": {
+      "type": "effect_on_conditions",
+      "description": "Do a kickflip.",
+      "effect_on_conditions": [ "kickflip_eoc" ]
+    }
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "kickflip_eoc",
+    "effect": [
+      { "u_message": "That's a kickflip." },
+      {
+        "if": { "u_query_tile": "line_of_sight", "target_var": { "u_val": "pos" }, "message": "Select point", "range": 10 },
+        "then": [
+          {
+            "u_transform_radius": 0,
+            "ter_furn_transform": "shallow_water_tr",
+            "target_var": { "u_val": "pos" }
+          },
+          {
+            "u_spawn_monster": "mon_leo_tadpole", 
+            "real_count": 1,
+            "min_radius": 0,
+            "max_radius": 0,
+            "target_var": { "u_val": "pos" }
+          },
+          {
+            "u_transform_radius": 0,
+            "ter_furn_transform": "unwater_tr",
+            "target_var": { "u_val": "pos" }
+          },
+          {
+            "map_spawn_item": "pipebomb",
+            "loc": { "u_val": "pos" }
+          },
+          { "u_set_field": "fd_fire", "radius": 0, "target_var": { "u_val": "pos" }, "intensity": 1 }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "ter_furn_transform",
+    "id": "shallow_water_tr",
+    "terrain": [
+      {
+        "result": "t_swater_sh",
+        "valid_flags": [ "DIGGABLE" ],
+        "message": "Tadpole!",
+        "message_good": true
+      }
+    ]
+  },
+  {
+    "type": "ter_furn_transform",
+    "id": "unwater_tr",
+    "terrain": [
+      {
+        "result": "t_grass",
+        "valid_terrain": [ "t_swater_sh" ],
+        "message": "No tadpole!",
+        "message_good": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "spell_kickflip",
+    "name": "Kickflip",
+    "description": "Kickflip",
+    "valid_targets": [ "hostile", "ground" ],
+    "flags": [ "SILENT", "NO_LEGS", "NO_HANDS", "RANDOM_DAMAGE", "EXTRA_EFFECTS_FIRST" ],
+    "message": "",
+    "effect": "dash",
+    "effect_str": "downed",
+    "min_damage": 10,
+    "max_damage": 20,
+    "shape": "blast",
+    "min_range": 3,
+    "max_range": 3,
+    "spell_class": "NONE",
+    "difficulty": -20,
+    "max_level": 1,
+    "energy_source": "NONE"
+  }
+]

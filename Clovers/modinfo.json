@@ -1,0 +1,11 @@
+[
+  {
+    "type": "MOD_INFO",
+    "id": "lv_clovers",
+    "name": "Clovers",
+    "authors": [ "ladyViviaen" ],
+    "description": "Adds different kinds of clovers - but no way to get them yet",
+    "category": "misc",
+    "dependencies": [ "dda" ]
+  }
+]

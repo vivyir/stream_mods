@@ -1,0 +1,101 @@
+[
+  {
+    "type": "enchantment",
+    "id": "ENCH_FIFTY_CLOVER",
+    "condition": "ALWAYS",
+    "has": "HELD",
+    "values": [ { "value": "DODGE_CHANCE", "multiply": 0.1 } ]
+  },
+  {
+    "type": "GENERIC",
+    "id": "fifty_leaf_clover",
+    "name": { "str": "50 leaf clover" },
+    "description": "50 Leaf Clover - It has 50 leaves. You're a bit lucky or whatever - Adds 0.1 dodge chance.",
+    "color": "green",
+    "symbol": "*",
+    "weight": "1 g",
+    "volume": "1 ml",
+    "price_postapoc": "2 USD"
+  },
+  {
+    "type": "effect_type",
+    "id": "fifty_leaf_clover_effect",
+    "name": [ "Child" ],
+    "desc": [ "You're." ],
+    "enchantments": [ "ENCH_FIFTY_CLOVER" ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "apply_fifty_clover_effect",
+    "eoc_type": "RECURRING",
+    "recurrence": 50,
+    "condition": { "u_has_item": "fifty_leaf_clover" },
+    "effect": { "u_add_effect": "fifty_leaf_clover_effect", "duration": 120 }
+  },
+  {
+    "type": "enchantment",
+    "id": "ENCH_FIFTY_ONE_CLOVER",
+    "condition": "ALWAYS",
+    "has": "HELD",
+    "values": [ { "value": "DODGE_CHANCE", "multiply": 0.51 } ]
+  },
+  {
+    "type": "GENERIC",
+    "id": "fifty_one_leaf_clover",
+    "name": { "str": "51 leaf clover" },
+    "description": "51 Leaf Clover - A Clover, that's all it is and more. 51 Leaves, each a world onto their own, each full of luck. Pick it, Child of Luck.",
+    "color": "green",
+    "symbol": "*",
+    "weight": "1 g",
+    "volume": "1 ml",
+    "price_postapoc": "51000000 USD"
+  },
+  {
+    "type": "effect_type",
+    "id": "fifty_one_leaf_clover_effect",
+    "name": [ "Child of Luck" ],
+    "desc": [ "You're a bit more lucky." ],
+    "enchantments": [ "ENCH_FIFTY_ONE_CLOVER" ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "apply_clover_effect",
+    "eoc_type": "RECURRING",
+    "recurrence": 50,
+    "condition": { "u_has_item": "fifty_one_leaf_clover" },
+    "effect": { "u_add_effect": "fifty_one_leaf_clover_effect", "duration": 120 }
+  },
+  {
+    "type": "enchantment",
+    "id": "ENCH_FIFTY_ONE_CLOVER_NEG",
+    "condition": "ALWAYS",
+    "has": "HELD",
+    "values": [ { "value": "DODGE_CHANCE", "multiply": -0.51 } ]
+  },
+  {
+    "type": "GENERIC",
+    "id": "neg_fifty_one_leaf_clover",
+    "name": { "str": "-51 leaf clover" },
+    "description": "-51 Leaf Clover - In its 51 Leaves, a grave. And they want you to join them. Pick this if you're feeling /too/ Lucky.",
+    "color": "green",
+    "symbol": "*",
+    "weight": "1 g",
+    "volume": "1 ml",
+    "price_postapoc": "1 USD"
+  },
+  {
+    "type": "effect_type",
+    "id": "fifty_one_leaf_clover_effect_neg",
+    "name": [ "Child of Misfortune" ],
+    "desc": [ "This is bad." ],
+    "enchantments": [ "ENCH_FIFTY_ONE_CLOVER_NEG" ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "apply_clover_effect_neg",
+    "eoc_type": "RECURRING",
+    "recurrence": 50,
+    "condition": { "u_has_item": "neg_fifty_one_leaf_clover" },
+    "effect": { "u_add_effect": "fifty_one_leaf_clover_effect_neg", "duration": 120 }
+  }
+]
